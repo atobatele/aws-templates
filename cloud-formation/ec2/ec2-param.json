@@ -1,7 +1,7 @@
 [
     {
         "ParameterKey": "TagValue",
-        "ParameterValue": "CLI"
+        "ParameterValue": "Jenkins"
     },
     {
         "ParameterKey": "ImageId",
