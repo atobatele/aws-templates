@@ -29,7 +29,7 @@ spec:
                 container('aws-cli') {
                     withCredentials([usernamePassword(credentialsId: 'aws-keys', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
                         sh 'ls -lrt'
-                        sh 'cd /home/jenkins/agent/workspace/aws-cloudformation/cloud-fromation/ec2'
+                        sh 'cd /home/jenkins/agent/workspace/aws-cloudformation/cloud-fromation/ec2/'
                         sh 'ls -lrt'
                         sh 'aws configure set region us-east-1'
                         sh 'aws cloudformation create-stack --template-body file://0-just-ec2.yaml --parameters file://0-just-ec2.json --stack-name just-ec2'
