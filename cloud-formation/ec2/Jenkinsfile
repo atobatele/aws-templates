@@ -1,0 +1,38 @@
+
+pipeline {
+    agent {
+        kubernetes {
+            yaml '''
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: aws-cli
+    image: amazon/aws-cli
+    tty: true
+    command:
+    - /bin/bash
+'''
+       defaultContainer 'aws-cli'
+        }
+    }
+    stages {
+        stage('Clone') {
+            steps {
+                sh 'pwd'
+                sh 'ls'
+            }
+        }
+      
+       stage('Main') {
+            steps {
+                container('aws-cli') {
+                    withCredentials([usernamePassword(credentialsId: 'aws-keys', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
+                     sh 'aws configure set region us-east-1'
+                     sh 'aws s3 ls'
+                    }
+                }
+            }
+        }
+    }
+}
