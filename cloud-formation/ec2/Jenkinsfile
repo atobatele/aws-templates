@@ -32,7 +32,7 @@ spec:
                         cd $WORKSPACE/cloud-formation/ec2/
                         ls -lrt
                         aws configure set region us-east-1
-                        aws cloudformation create-stack --template-body file://0-just-ec2.yaml --parameters file://0-just-ec2.json --stack-name just-ec2
+                        aws cloudformation create-stack --template-body file://ec2.yaml --parameters file://ec2-param.json --stack-name just-ec2
                         '''
                     }
                 }
