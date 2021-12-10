@@ -29,6 +29,9 @@ spec:
                 container('aws-cli') {
                     withCredentials([usernamePassword(credentialsId: 'aws-keys', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
                         sh 'ls -lrt'
+                        sh 'echo $WORKSPACE'
+                        sh 'ls $WORKSPACE/cloud-formation'
+                        sh 'pwd'
                         sh 'cd /home/jenkins/agent/workspace/aws-cloudformation/cloud-fromation/ec2/'
                         sh 'ls -lrt'
                         sh 'aws configure set region us-east-1'
